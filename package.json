@@ -1,0 +1,44 @@
+{
+	"name": "@rbxts/toucanet",
+	"version": "1.0.0",
+	"description": "",
+	"main": "out/init.lua",
+	"scripts": {
+		"setup": "bun i && bun i --cwd test && rokit install",
+		"build": "rbxtsc",
+		"dev": "concurrently -n \"LIB,TEST,ROJO\" -c \"blue,magenta,yellow\" \"rbxtsc -w\" \"rbxtsc -p test -w\" \"rojo serve test/default.project.json\"",
+		"prepublishOnly": "npm run build",
+		"check": "biome check --write .",
+		"predev": "rbxtsc && rbxtsc -p test",
+		"preinstall": "npx only-allow bun"
+	},
+	"keywords": [
+		"Toucan",
+		"ECS",
+		"Replication"
+	],
+	"author": "",
+	"license": "ISC",
+	"types": "out/index.d.ts",
+	"files": [
+		"out",
+		"!**/*.tsbuildinfo"
+	],
+	"publishConfig": {
+		"access": "public"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.6.5",
+		"@rbxts/compiler-types": "^3.0.0-types.0",
+		"@rbxts/types": "^1.0.961",
+		"concurrently": "^10.0.6",
+		"roblox-ts": "^3.0.0",
+		"typescript": "5.5.3"
+	},
+	"peerDependencies": {
+		"@rbxts/toucan": "^0.7.1"
+	},
+	"dependencies": {
+		"@rbxts/link": "^1.2.3"
+	}
+}
